@@ -1,6 +1,6 @@
-import type { GatsbyConfig } from "gatsby"
-import * as dotenv from "dotenv"
-dotenv.config()
+import type { GatsbyConfig } from "gatsby";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -23,6 +23,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
-}
+};
 
-export default config
+export default config;

@@ -1,4 +1,6 @@
 import type { GatsbyConfig } from "gatsby"
+import * as dotenv from "dotenv"
+dotenv.config()
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -12,6 +14,14 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_API_KEY,
+      },
+    },
   ],
 }
 

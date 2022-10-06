@@ -1137,6 +1137,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/asap@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/asap/-/asap-4.5.9.tgz#e171d68d260923def0f68a2671a74e98c377248d"
+  integrity sha512-XfiNtjFJtzIpZj8JypesyGhMfJYmquSrB0MG8df/v6xJ37GoDhPT1iM335JDPjxbkucwy9RV9wRVvjrzv6YdwA==
+
 "@gatsbyjs/parcel-namer-relative-to-cwd@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-1.9.0.tgz#9263de16d93463974d6fe0cd960eadca184a7d9f"

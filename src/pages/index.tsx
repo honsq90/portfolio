@@ -4,7 +4,7 @@ import type { HeadFC } from "gatsby";
 const IndexPage = () => {
   return (
     <>
-      <h1 className="text-3xl font-bold text-center">
+      <h1 className="text-3xl text-center">
         Coming soon
       </h1>
     </>

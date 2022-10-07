@@ -1,5 +1,5 @@
 import "./src/styles/global.css";
-import "@fontsource/asap";
+import "@fontsource/cabin";
 import React from "react";
 import Layout from "./src/components/layout";
 

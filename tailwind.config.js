@@ -9,11 +9,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'hero': "url('/images/hero.jpg')",
-      },
       fontFamily: {
-        'sans': ['Asap', ...defaultTheme.fontFamily.sans],
+        'sans': ['Cabin', ...defaultTheme.fontFamily.sans],
       },
     },
   },

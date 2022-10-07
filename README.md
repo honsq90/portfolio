@@ -18,3 +18,5 @@
 - <https://khan.github.io/tota11y/>
 - <https://pa11y.org/>
 - <https://redpixelthemes.com/blog/tailwindcss-background-image/>
+- <https://benwiz.com/blog/deploy-github-pages-with-aws-route-53-and-https/>
+- <https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k>

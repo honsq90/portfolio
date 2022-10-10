@@ -4,8 +4,8 @@ import * as React from "react";
 
 const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
   return (
-    <div className="grid grid-flow-row grid-cols-2 overflow-scroll max-h-screen">
-      {data.allContentfulAsset.nodes.map((node) => <div key={node.id}>
+    <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-y-0">
+      {data.allContentfulAsset.nodes.map((node) => <div key={node.id} className="">
         <GatsbyImage image={node.gatsbyImageData!} alt="" />
       </div>)}
     </div>

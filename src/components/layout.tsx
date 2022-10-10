@@ -12,7 +12,7 @@ export default function Layout({ data, children }: PageProps<Queries.IndexPageQu
         <meta name="siteUrl" content={data?.site?.siteMetadata?.siteUrl} />
         <body className="bg-slate-900 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-900 to-slate-700 bg-no-repeat" />
       </Helmet>
-      <header className="flex-none w-1/4 h-screen bg-white flex flex-col ">
+      <header className="flex-none w-1/6 h-screen bg-white flex flex-col ">
         <img src={logo} alt="Site logo" className="flex-none w-16 h-auto justify-center self-center  py-4"/>
         <div className="text-center text-3xl pt-1">
           Shuqian Hon Photography

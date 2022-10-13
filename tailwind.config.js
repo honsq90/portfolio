@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-var defaultTheme = require('tailwindcss/defaultTheme')
+var defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Cabin', ...defaultTheme.fontFamily.sans],
+        sans: ["Cabin", ...defaultTheme.fontFamily.sans],
       },
     },
   },

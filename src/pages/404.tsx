@@ -4,7 +4,7 @@ import { Link, HeadFC } from "gatsby";
 const NotFoundPage = () => {
   return (
     <main>
-      <h1 >Page not found</h1>
+      <h1>Page not found</h1>
       <p>
         Sorry 😔, we couldn’t find what you were looking for.
         <br />

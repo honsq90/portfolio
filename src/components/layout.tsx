@@ -11,13 +11,13 @@ export default function Layout({
   const years = orderBy(range(2010, 2023), [], "desc");
 
   return (
-    <div className="flex flex-col overflow-scroll max-h-screen lg:max-w-none lg:flex-row">
+    <div className="flex flex-col overflow-scroll max-h-screen lg:max-w-none lg:flex-row bg-slate-800 text-slate-200">
       <Helmet>
         <title>{data?.site?.siteMetadata?.title}</title>
         <meta name="siteUrl" content={data?.site?.siteMetadata?.siteUrl} />
         <body className="bg-slate-900 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-900 to-slate-700 bg-no-repeat" />
       </Helmet>
-      <header className="fixed top-0 z-10 w-full bg-white flex-none flex flex-row px-4 py-1 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
+      <header className="fixed top-0 z-10 w-full flex-none flex flex-row px-4 py-1 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
         <img
           src={logo}
           alt="Site logo"
@@ -34,7 +34,7 @@ export default function Layout({
               <a
                 key={year}
                 href={`#year-${year}`}
-                className="select-none flex-grow text-center p-1 border-x border-y border-transparent border-solid hover:border-b-slate-700 hover:bg-slate-200 lg:border-slate-700 lg:rounded-md lg:border lg:w-1/3 "
+                className="select-none flex-grow text-center p-1 border-x border-y border-transparent border-solid hover:border-b-slate-300 hover:bg-slate-700 lg:border-slate-300 lg:rounded-md lg:border lg:w-1/3 "
               >
                 {year}
               </a>
@@ -46,7 +46,7 @@ export default function Layout({
         {children}
       </main>
 
-      <footer className="fixed z-10 px-4 text-xs text-center bg-white w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6">
+      <footer className="fixed z-10 px-4 text-xs text-center w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6">
         Copyright © 2004-2022 Shuqian Hon
       </footer>
     </div>

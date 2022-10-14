@@ -15,13 +15,13 @@ export default function Layout({
       <Helmet>
         <title>{data?.site?.siteMetadata?.title}</title>
         <meta name="siteUrl" content={data?.site?.siteMetadata?.siteUrl} />
-        <body className="bg-slate-900 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-900 to-slate-700 bg-no-repeat" />
+        <body className="bg-slate-800 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-800 to-slate-700 bg-no-repeat" />
       </Helmet>
-      <header className="fixed top-0 z-10 w-full flex-none flex flex-row px-4 py-1 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
+      <header className="bg-slate-800 fixed top-0 z-10 w-full flex-none flex flex-row px-4 py-1 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
         <img
           src={logo}
           alt="Site logo"
-          className="w-auto lg:h-24 h-10 justify-center self-center lg:py-4"
+          className="w-auto lg:h-24 h-8 justify-center self-center lg:py-4"
         />
 
         <div className="hidden lg:block text-center text-2xl self-center">
@@ -42,11 +42,11 @@ export default function Layout({
           })}
         </nav>
       </header>
-      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-10 lg:mt-0">
+      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-12 lg:mt-0">
         {children}
       </main>
 
-      <footer className="fixed z-10 px-4 text-xs text-center w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6">
+      <footer className="bg-slate-800 fixed z-10 px-4 text-xs text-center w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6">
         Copyright © 2004-2022 Shuqian Hon
       </footer>
     </div>

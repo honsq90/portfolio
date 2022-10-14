@@ -34,7 +34,7 @@ export default function Layout({
               <a
                 key={year}
                 href={`#year-${year}`}
-                className="select-none flex-grow text-center p-1 border-x border-y border-transparent border-solid hover:border-b-slate-300 hover:bg-slate-700 lg:border-slate-300 lg:rounded-md lg:border lg:w-1/3 "
+                className="select-none flex-grow text-center px-1 border-x border-y border-transparent border-solid hover:border-b-slate-300 hover:bg-slate-700 lg:border-slate-300 lg:rounded-md lg:border lg:w-1/3 "
               >
                 {year}
               </a>
@@ -42,7 +42,7 @@ export default function Layout({
           })}
         </nav>
       </header>
-      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-12 lg:mt-0">
+      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-10 mb-4 lg:mt-0">
         {children}
       </main>
 

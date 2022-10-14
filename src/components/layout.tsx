@@ -18,14 +18,14 @@ export default function Layout({
         <meta name="siteUrl" content={data?.site?.siteMetadata?.siteUrl} />
         <body className="bg-slate-900 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-900 to-slate-700 bg-no-repeat" />
       </Helmet>
-      <header className="fixed top-0 z-10 w-full flex-none bg-white flex flex-row px-4 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
+      <header className="fixed top-0 z-10 w-full bg-white flex-none flex flex-row px-4 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
         <img
           src={logo}
           alt="Site logo"
-          className="flex-none w-auto lg:h-24 h-10 justify-center self-center p-1 lg:py-4"
+          className="w-auto lg:h-24 h-10 justify-center self-center p-1 lg:py-4"
         />
 
-        <div className="hidden lg:block text-center text-2xl ml-1 lg:text-3xl pt-1 self-center">
+        <div className="hidden lg:block text-center text-2xl ml-1 pt-1 self-center">
           Shuqian Hon Photography
         </div>
 
@@ -37,11 +37,14 @@ export default function Layout({
             </a>
           })}
         </nav>
-
       </header>
       <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-10 lg:mt-0">
         {children}
       </main>
+
+      <footer className="fixed z-10 text-xs bg-white w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6 text-center">
+        Copyright © 2004-2022 Shuqian Hon
+      </footer>
     </div>
   );
 }

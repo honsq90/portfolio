@@ -18,28 +18,28 @@ export default function Layout({
         <meta name="siteUrl" content={data?.site?.siteMetadata?.siteUrl} />
         <body className="bg-slate-900 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-900 to-slate-700 bg-no-repeat" />
       </Helmet>
-      <header className="sticky top-0 z-10 flex-none lg:w-1/6 lg:h-screen bg-white flex flex-row px-4 md:justify-center lg:justify-start lg:flex-col">
+      <header className="fixed top-0 z-10 w-full flex-none bg-white flex flex-row px-4 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
         <img
           src={logo}
           alt="Site logo"
-          className="flex-none w-10 lg:w-16 h-auto justify-center self-center py-2 lg:py-4"
+          className="flex-none w-auto lg:h-24 h-10 justify-center self-center p-1 lg:py-4"
         />
 
         <div className="hidden lg:block text-center text-2xl ml-1 lg:text-3xl pt-1 self-center">
           Shuqian Hon Photography
         </div>
 
-        <nav className="flex p-2 overflow-x-scroll max-w-full lg:flex lg:flex-wrap lg:pl-4 lg:pt-4 gap-1">
+        <nav className="flex p-1 overflow-x-scroll w-full lg:flex lg:flex-wrap lg:pl-4 lg:pt-4 gap-1">
           {years.map((year) => {
             return <a key={year} href={`#year-${year}`}
-              className="select-none flex-grow text-center p-1 border-slate-600 border-solid lg:rounded-md lg:border lg:w-1/3 border-r-slate-700 hover:border-b hover:bg-slate-200">
+              className="select-none flex-grow text-center p-1 border-x border-y border-transparent border-solid hover:border-b-slate-700 hover:bg-slate-200 lg:border-slate-700 lg:rounded-md lg:border lg:w-1/3 ">
               {year}
             </a>
           })}
         </nav>
 
       </header>
-      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth">
+      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-10 lg:mt-0">
         {children}
       </main>
     </div>

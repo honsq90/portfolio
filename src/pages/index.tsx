@@ -9,7 +9,7 @@ const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
   const photosByYear = groupBy(photos, (node) => node.title!.slice(0, 4))
 
   return (
-    <div className="flex flex-wrap flex-grow gap-y-2 md:gap-y-0">
+    <div className="flex flex-wrap flex-grow">
       {reverse(Object.keys(photosByYear))
         .map((year) =>
           <React.Fragment key={year}>

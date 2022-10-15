@@ -34,7 +34,7 @@ export default function Layout({
               <a
                 key={year}
                 href={`#year-${year}`}
-                className="select-none flex-grow text-center px-1 border-x border-y border-transparent border-solid hover:border-b-slate-300 hover:bg-slate-700 lg:border-slate-300 lg:rounded-md lg:border lg:w-1/3 "
+                className="select-none flex self-center flex-grow text-center px-1 border border-transparent border-solid hover:border-b-slate-300 hover:bg-slate-700 lg:block lg:border-slate-300 lg:rounded-md lg:border lg:w-1/3 "
               >
                 {year}
               </a>

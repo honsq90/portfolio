@@ -21,3 +21,4 @@
 - <https://benwiz.com/blog/deploy-github-pages-with-aws-route-53-and-https/>
 - <https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k>
 - <https://cpina.github.io/push-to-another-repository-docs/>
+- <https://www.contentful.com/blog/2020/06/01/running-static-site-builds-with-github-actions-and-contentful/>

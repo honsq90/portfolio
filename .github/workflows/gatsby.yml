@@ -100,5 +100,6 @@ jobs:
           source-directory: ./public
           destination-github-username: 'honsq90'
           destination-repository-name: 'honsq90.github.io'
+          user-email: ${{ secrets.SSH_DEPLOY_EMAIL }}
 
 

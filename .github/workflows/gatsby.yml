@@ -8,6 +8,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+  # https://www.contentful.com/blog/2020/06/01/running-static-site-builds-with-github-actions-and-contentful/
+  repository_dispatch:
+    types: [contentful.publish-event]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

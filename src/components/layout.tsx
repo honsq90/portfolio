@@ -28,7 +28,7 @@ export default function Layout({
           Shuqian Hon Photography
         </div>
 
-        <nav className="flex gap-1 p-1 overflow-x-scroll w-full lg:flex lg:flex-wrap lg:py-8 ">
+        <nav className="flex gap-1 mx-1 lg:mx-0 lg:p-1 overflow-x-scroll w-full lg:flex lg:flex-wrap lg:py-8 ">
           {years.map((year) => {
             return (
               <a

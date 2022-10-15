@@ -8,7 +8,7 @@ export default function Layout({
   data,
   children,
 }: PageProps<Queries.IndexPageQuery>) {
-  const years = orderBy(range(2010, 2023), [], "desc");
+  const years = orderBy(range(2009, 2023), [], "desc");
 
   return (
     <div className="flex flex-col overflow-scroll max-h-screen lg:max-w-none lg:flex-row bg-slate-800 text-slate-200">

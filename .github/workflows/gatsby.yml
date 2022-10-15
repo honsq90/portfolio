@@ -75,7 +75,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           # Artifact name
-          name: artifact # optional, default is artifact
+          name: public # optional, default is artifact
           # A file, directory or wildcard pattern that describes what to upload
           path: ./public
           # The desired behavior if no files are found using the provided path.
@@ -89,15 +89,15 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           # Artifact name
-          name: artifact # optional
+          name: public # optional
           # Destination path
-      - name: Display structure of downloaded files
-        run: ls -R
+          path: ./public
       - name: Push to honsq90.github.io
         uses: cpina/github-action-push-to-another-repository@main
         env:
           SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
         with:
+          source-directory: ./public
           destination-github-username: 'honsq90'
           destination-repository-name: 'honsq90.github.io'
           target-branch: 'master'

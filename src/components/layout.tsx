@@ -42,7 +42,7 @@ export default function Layout({
           })}
         </nav>
       </header>
-      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-10 mb-4 lg:mt-0">
+      <main className="flex-auto overflow-scroll max-h-screen scroll-smooth mt-10 mb-4 lg:mb-0 lg:mt-0">
         {children}
       </main>
 

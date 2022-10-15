@@ -79,4 +79,5 @@ jobs:
           source-directory: 'public'
           destination-github-username: 'honsq90'
           destination-repository-name: 'honsq90.github.io'
+          target-branch: 'master'
 

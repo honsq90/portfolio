@@ -25,7 +25,7 @@ export default function Layout({
         />
 
         <div className="hidden lg:block text-center text-2xl self-center">
-          Shuqian Hon Photography
+          <span className="inline-block">Shuqian Hon</span> Photography
         </div>
 
         <nav className="flex gap-1 mx-1 lg:mx-0 lg:p-1 overflow-x-scroll w-full lg:flex lg:flex-wrap lg:py-8 ">
@@ -47,7 +47,7 @@ export default function Layout({
       </main>
 
       <footer className="bg-slate-800 fixed z-10 px-4 text-xs text-center w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6">
-        Copyright © 2004-2022 Shuqian Hon
+        Copyright © 2004-2022 <span className="inline-block">Shuqian Hon</span>
       </footer>
     </div>
   );

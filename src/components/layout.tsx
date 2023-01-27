@@ -15,8 +15,8 @@ export default function Layout({
   return (
     <div className="flex flex-col overflow-scroll max-h-screen lg:max-w-none lg:flex-row bg-slate-800 text-slate-200">
       <Helmet>
-        <title>{data?.site?.siteMetadata?.title}</title>
-        <meta name="siteUrl" content={data?.site?.siteMetadata?.siteUrl} />
+        <title>Shuqian Hon Photography</title>
+        <meta name="siteUrl" content={"https://honsq90.github.io"} />
         <body className="bg-slate-800 overflow-hidden w-full h-screen bg-gradient-to-tr from-slate-800 to-slate-700 bg-no-repeat" />
       </Helmet>
       <header className="bg-slate-800 fixed top-0 z-10 w-full flex-none flex flex-row px-4 py-1 md:justify-center lg:sticky lg:w-1/6 lg:h-screen lg:justify-start lg:flex-col">
@@ -58,12 +58,6 @@ export default function Layout({
 
 export const query = graphql`
   query IndexPage {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-      }
-    }
     allContentfulAsset {
       nodes {
         title

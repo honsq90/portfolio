@@ -38,6 +38,9 @@ export function FullScreen() {
 
   const closeModal = () => setModalIsOpen(false);
 
+  const query = new URLSearchParams(window.location.search)
+  const devMode = query.get("dev")
+
   return <Modal
     overlayClassName="z-10 inset-0 fixed"
     className="inset-0 absolute bg-slate-800 justify-center flex"
@@ -47,11 +50,11 @@ export function FullScreen() {
     ariaHideApp={false}
   >
     <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
-    <button type="button" className="text-white p-2 fixed left-0 right-1/2 md:right-3/4 top-10 bottom-0 focus:border-0"
+    <button type="button" className={`text-white p-2 fixed left-0 right-1/2 md:right-3/4 top-10 bottom-0 focus:border-0 ${devMode && "border-2 border-red-700"}`}
       onClick={() => window.postMessage({ type: "image-left" })} title="Prev">
       &nbsp;
     </button>
-    <button type="button" className="text-white p-2 fixed right-0 left-1/2 md:left-3/4 top-10 bottom-0 focus:border-0"
+    <button type="button" className={`text-white p-2 fixed right-0 left-1/2 md:left-3/4 top-10 bottom-0 focus:border-0 ${devMode && "border-2 border-red-700"}`}
       onClick={() => window.postMessage({ type: "image-right" })} title="Next">
       &nbsp;
     </button>

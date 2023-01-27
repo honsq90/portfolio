@@ -4,45 +4,64 @@ import { groupBy, reverse } from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
+function transformEventKeyToCommand(eventKey: string): "left" | "right" | null {
+  if (eventKey == "ArrowLeft") {
+    return "left"
+  } else if (eventKey == "ArrowRight") {
+    return "right"
+  }
+  return null;
+}
+
 const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
   const photos = data.allContentfulAsset?.nodes || [];
   const photosByYear = groupBy(photos, (node) => node.title!.slice(0, 4));
 
   const [selectedId, setSelectedId] = useState<string>()
 
-  useEffect(() => {
-    const changeImage = (event: KeyboardEvent) => {
-
-      if (event.key == "ArrowLeft" || event.key == "ArrowRight") {
-        const currentIndex = photos.findIndex((p) => p.id == selectedId);
-        let newIndex = currentIndex;
-        if (event.key == "ArrowLeft") {
-          newIndex -= 1
-          if (newIndex < 0) {
-            newIndex = photos.length - 1
-          }
-        } else {
-          newIndex += 1
-          if (newIndex >= photos.length) {
-            newIndex = 0
-          }
-        }
-
-        const node = photos[newIndex]
-        setSelectedId(node.id)
-        window.postMessage({ type: "image-requested", node })
+  const navigateGallery = (command: "left" | "right") => {
+    const currentIndex = photos.findIndex((p) => p.id == selectedId);
+    let newIndex = currentIndex;
+    if (command == "left") {
+      newIndex -= 1;
+      if (newIndex < 0) {
+        newIndex = photos.length - 1;
       }
-
+    } else {
+      newIndex += 1;
+      if (newIndex >= photos.length) {
+        newIndex = 0;
+      }
     }
 
-    window.addEventListener("keydown", changeImage)
+    const node = photos[newIndex];
+    setSelectedId(node.id);
+    window.postMessage({ type: "image-requested", node });
+  }
+
+  useEffect(() => {
+    const changeImageViaKeyboard = (event: KeyboardEvent) => {
+      const command = transformEventKeyToCommand(event.key)
+      if (command) {
+        navigateGallery(command);
+      }
+    }
+    const changeImageViaButton = (event: MessageEvent<any>) => {
+      if (event.data.type == "image-left") {
+        navigateGallery("left");
+      } else if (event.data.type == "image-right") {
+        navigateGallery("right");
+      }
+    }
+
+    window.addEventListener("keydown", changeImageViaKeyboard)
+    window.addEventListener("message", changeImageViaButton)
 
     return () => {
-      window.removeEventListener("keydown", changeImage)
+      window.removeEventListener("keydown", changeImageViaKeyboard)
+      window.removeEventListener("message", changeImageViaButton)
     }
   }, [photos, selectedId])
-
-
 
   return (
     <div className="flex flex-wrap flex-grow">

@@ -1,6 +1,6 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React, { useEffect, useState } from "react";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 interface PhotoWindowDataNode {
   id: string;
@@ -47,7 +47,17 @@ export function FullScreen() {
     ariaHideApp={false}
   >
     <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
-    <button className="text-white p-2 fixed right-0" onClick={closeModal}>Close</button>
+    <button type="button" className="text-white p-2 fixed text-4xl left-0 bottom-0 md:hidden"
+      onClick={() => window.postMessage({ type: "image-left" })} title="Prev">
+      &#60;
+    </button>
+    <button type="button" className="text-white p-2 fixed text-4xl right-0 bottom-0 md:hidden"
+      onClick={() => window.postMessage({ type: "image-right" })} title="Next">
+      &#62;
+    </button>
+    <button type="button" className="text-white p-2 fixed right-0" onClick={closeModal}>
+      &#9587;
+    </button>
   </Modal>
 
 }

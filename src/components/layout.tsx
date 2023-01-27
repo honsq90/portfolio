@@ -1,14 +1,16 @@
 import { graphql, PageProps } from "gatsby";
-import { orderBy, range, uniq } from "lodash";
+import { uniq } from "lodash";
 import React from "react";
 import Helmet from "react-helmet";
 import logo from "../static/images/logo.png";
+import { FullScreen } from "./FullScreen";
 
 export default function Layout({
   data,
   children,
 }: PageProps<Queries.IndexPageQuery>) {
-  const years = uniq(data.allContentfulAsset.nodes.map(it => it.title?.substring(0,4)))
+
+  const years = uniq(data.allContentfulAsset.nodes.map(it => it.title?.substring(0, 4)))
 
   return (
     <div className="flex flex-col overflow-scroll max-h-screen lg:max-w-none lg:flex-row bg-slate-800 text-slate-200">
@@ -49,6 +51,7 @@ export default function Layout({
       <footer className="bg-slate-800 fixed z-10 px-4 text-xs text-center w-full bottom-0 lg:text-base lg:left-0 lg:justify-self-end lg:w-1/6">
         Copyright © 2004-{new Date().getFullYear()} <span className="inline-block">Shuqian Hon</span>
       </footer>
+      <FullScreen/>
     </div>
   );
 }

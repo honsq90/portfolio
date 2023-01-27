@@ -36,15 +36,18 @@ export function FullScreen() {
     return null
   }
 
+  const closeModal = () => setModalIsOpen(false);
+
   return <Modal
     overlayClassName="z-10 inset-0 fixed"
     className="inset-0 absolute bg-slate-800 justify-center flex"
     isOpen={modalIsOpen}
     contentLabel={selectedImage.title}
-    onRequestClose={() => setModalIsOpen(false)}
+    onRequestClose={closeModal}
     ariaHideApp={false}
   >
     <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
+    <button className="text-white p-2 fixed right-0" onClick={closeModal}>Close</button>
   </Modal>
 
 }

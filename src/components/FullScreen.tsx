@@ -47,13 +47,11 @@ export function FullScreen() {
     ariaHideApp={false}
   >
     <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
-    <button type="button" className="text-white p-2 fixed text-4xl left-0 bottom-0 md:hidden"
+    <button type="button" className="text-white p-2 fixed text-4xl left-0 right-3/4 top-10 bottom-0"
       onClick={() => window.postMessage({ type: "image-left" })} title="Prev">
-      &#60;
     </button>
-    <button type="button" className="text-white p-2 fixed text-4xl right-0 bottom-0 md:hidden"
+    <button type="button" className="text-white p-2 fixed text-4xl right-0 left-3/4 top-10 bottom-0"
       onClick={() => window.postMessage({ type: "image-right" })} title="Next">
-      &#62;
     </button>
     <button type="button" className="text-white p-2 fixed right-0" onClick={closeModal}>
       &#9587;

@@ -17,7 +17,6 @@ export function FullScreen() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<PhotoWindowDataNode>()
 
-
   useEffect(() => {
     const processMessage = (event: MessageEvent<PhotoWindowData>): void => {
       if (event.data.type == "image-clicked") {
@@ -39,13 +38,13 @@ export function FullScreen() {
 
   return <Modal
     overlayClassName="z-10 inset-0 fixed"
-    className="inset-0 absolute bg-black justify-center flex"
+    className="inset-0 absolute bg-slate-800 justify-center flex"
     isOpen={modalIsOpen}
     contentLabel={selectedImage.title}
     onRequestClose={() => setModalIsOpen(false)}
     ariaHideApp={false}
   >
-    <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} />
+    <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
   </Modal>
 
 }

@@ -13,6 +13,15 @@ interface PhotoWindowData {
   node: PhotoWindowDataNode;
 }
 
+const toggleFullScreen = () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+  } else {
+    document.documentElement.requestFullscreen()
+  }
+};
+
+
 export function FullScreen() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<PhotoWindowDataNode>()
@@ -26,9 +35,18 @@ export function FullScreen() {
         setSelectedImage(event.data.node)
       }
     };
+
+    const hotkeyFullscreen = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() == "f") {
+        toggleFullScreen()
+      }
+    }
+
     window.addEventListener("message", processMessage)
+    window.addEventListener("keydown", hotkeyFullscreen)
     return () => {
       window.removeEventListener("message", processMessage)
+      window.removeEventListener("keydown", hotkeyFullscreen)
     }
   }, [])
 
@@ -38,16 +56,13 @@ export function FullScreen() {
 
   const closeModal = () => setModalIsOpen(false);
 
-  const query = new URLSearchParams(window.location.search)
-  const devMode = query.get("dev")
-
   return <Modal
     overlayClassName="z-10 inset-0 fixed"
     className="inset-0 absolute justify-center flex"
     style={{
-       overlay: {
-         backgroundColor: selectedImage.fullScreen.backgroundColor
-       }
+      overlay: {
+        backgroundColor: selectedImage.fullScreen.backgroundColor
+      }
     }}
     isOpen={modalIsOpen}
     contentLabel={selectedImage.title}
@@ -55,16 +70,21 @@ export function FullScreen() {
     ariaHideApp={false}
   >
     <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
-    <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 left-0 top-10 bottom-0 focus:border-0 ${devMode && "border-2 border-red-700"}`}
+    <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 left-0 top-10 bottom-10 focus:border-0`}
       onClick={() => window.postMessage({ type: "image-left" })} title="Prev">
       &nbsp;
     </button>
-    <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 right-0 top-10 bottom-0 focus:border-0 ${devMode && "border-2 border-red-700"}`}
+    <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 right-0 top-10 bottom-10 focus:border-0`}
       onClick={() => window.postMessage({ type: "image-right" })} title="Next">
       &nbsp;
     </button>
-    <button type="button" className="text-white p-2 text-2xl absolute right-0" onClick={closeModal}>
-      &#9587;
+    <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0" title="Close"
+      onClick={closeModal}>
+      &#x2715;
+    </button>
+    <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0 bottom-0" title="Toggle fullscreen"
+      onClick={toggleFullScreen}>
+      &#x26F6;
     </button>
   </Modal>
 

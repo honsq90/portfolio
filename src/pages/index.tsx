@@ -71,7 +71,7 @@ const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
             <div
               key={node.id}
               id={index == 0 ? `year-${year}` : undefined}
-              className="md:w-1/2 content-center hover:cursor-pointer hover:opacity-90"
+              className="md:w-1/2 content-center hover:cursor-pointer hover:opacity-95"
               onClick={() => {
                 setSelectedId(node.id)
                 window.postMessage({ type: "image-clicked", node })

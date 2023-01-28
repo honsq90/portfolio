@@ -43,7 +43,12 @@ export function FullScreen() {
 
   return <Modal
     overlayClassName="z-10 inset-0 fixed"
-    className="inset-0 absolute bg-slate-800 justify-center flex"
+    className="inset-0 absolute justify-center flex"
+    style={{
+       overlay: {
+         backgroundColor: selectedImage.fullScreen.backgroundColor
+       }
+    }}
     isOpen={modalIsOpen}
     contentLabel={selectedImage.title}
     onRequestClose={closeModal}

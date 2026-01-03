@@ -11,7 +11,7 @@ export default function Layout({
 
   const data = useStaticQuery<Queries.LayoutQueryQuery>(graphql`
     query LayoutQuery {
-      allContentfulAsset {
+      allContentfulAsset(sort: {title: DESC}) {
         nodes {
           title
         }

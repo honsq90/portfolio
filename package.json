@@ -77,6 +77,17 @@
     "typescript": "^4.9.5"
   },
   "overrides": {
-    "qs": "6.14.1"
+    "qs": "6.14.1",
+    "cookie": "^0.7.0",
+    "tmp": "^0.2.3",
+    "gatsby": {
+      "react-server-dom-webpack": {
+        "react": "^18.3.1"
+      },
+      "eslint-config-react-app": {
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
+        "@typescript-eslint/parser": "^5.62.0"
+      }
+    }
   }
 }

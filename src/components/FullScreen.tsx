@@ -33,6 +33,7 @@ export function FullScreen() {
         setModalIsOpen(true)
       } else if (event.data.type == "image-requested") {
         setSelectedImage(event.data.node)
+        history.pushState(null, '', `#${event.data.node.title.replace(" ", "_")}`);
       }
     };
 
@@ -54,7 +55,10 @@ export function FullScreen() {
     return null
   }
 
-  const closeModal = () => setModalIsOpen(false);
+  const closeModal = () => {
+    setModalIsOpen(false);
+    history.pushState(null, '', window.location.pathname);
+  };
 
   return <Modal
     overlayClassName="z-10 inset-0 fixed"

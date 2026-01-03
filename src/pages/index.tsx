@@ -83,7 +83,9 @@ const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
               >
                 <GatsbyImage
                   imgClassName="h-full"
-                  image={node.gatsbyImageData!} alt={node.title!} />
+                  image={node.gatsbyImageData!} alt={node.title!}
+                  style={{ aspectRatio: '3/2' }}
+                />
               </a>
             ))}
           </div>

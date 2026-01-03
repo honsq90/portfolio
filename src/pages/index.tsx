@@ -98,7 +98,7 @@ export default IndexPage;
 
 export const query = graphql`
   query AllPhotos {
-    allContentfulAsset(sort: { fields: title, order: DESC }) {
+    allContentfulAsset(sort: {title: DESC}) {
       nodes {
         id
         title

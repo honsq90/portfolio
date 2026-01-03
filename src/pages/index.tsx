@@ -64,27 +64,33 @@ const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
   }, [photos, selectedId])
 
   return (
-    <div className="flex flex-wrap flex-grow">
+    <React.Fragment>
       {reverse(Object.keys(photosByYear)).map((year) => (
-        <React.Fragment key={year}>
-          {photosByYear[year].map((node, index) => (
-            <div
-              key={node.id}
-              id={index == 0 ? `year-${year}` : undefined}
-              className="md:w-1/2 content-center hover:cursor-pointer hover:opacity-95"
-              onClick={() => {
-                setSelectedId(node.id)
-                window.postMessage({ type: "image-clicked", node })
-              }}
-            >
-              <GatsbyImage
-                imgClassName="h-full"
-                image={node.gatsbyImageData!} alt={node.title!} />
-            </div>
-          ))}
-        </React.Fragment>
+        <section key={year} id={`year-${year}`}>
+          <h1 className="text-2xl my-4 scroll-m-4 border-t-4 rounded-sm">{year}</h1>
+          <div className="flex flex-wrap flex-grow">
+            {photosByYear[year].map((node, index) => (
+              <a
+                key={node.id}
+                id={`${node.title?.replace(" ", "_")}`}
+                href={`#${node.title?.replace(" ", "_")}`}
+                title={`#${node.title?.replace(" ", "_")}`}
+                className="md:w-1/2 content-center hover:cursor-pointer hover:opacity-95"
+                onClick={() => {
+                  setSelectedId(node.id)
+                  window.postMessage({ type: "image-clicked", node })
+                }}
+              >
+                <GatsbyImage
+                  imgClassName="h-full"
+                  image={node.gatsbyImageData!} alt={node.title!} />
+              </a>
+            ))}
+          </div>
+
+        </section>
       ))}
-    </div>
+    </React.Fragment>
   );
 };
 

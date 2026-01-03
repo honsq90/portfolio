@@ -28,7 +28,7 @@
     "@fontsource/cabin": "^4.5.8",
     "@mdx-js/react": "^2.1.3",
     "babel-plugin-styled-components": "^2.0.7",
-    "gatsby": "^4.25.7",
+    "gatsby": "^5.15.0",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-mdx": "^4.3.0",

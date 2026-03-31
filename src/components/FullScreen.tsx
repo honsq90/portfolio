@@ -63,9 +63,11 @@ export function FullScreen() {
   const goRight = () => window.postMessage({ type: "image-right" })
 
   const copyLink = () => {
-    navigator.clipboard && navigator.clipboard.writeText(window.location.href)
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    })
+
   };
 
   const closeModal = () => {
@@ -153,7 +155,7 @@ export function FullScreen() {
       >
         &#x2715;
       </button>
-      <button
+      {navigator.clipboard && <button
         type="button"
         className="text-white text-2xl focus:border-0"
         aria-label="Copy link"
@@ -161,7 +163,7 @@ export function FullScreen() {
         title={copied ? "Copied!" : "Copy link"}
       >
         {copied ? "✅" : "🔗"}
-      </button>
+      </button>}
       <button
         type="button"
         className="text-white text-2xl focus:border-0 disabled:opacity-30 md:hidden"

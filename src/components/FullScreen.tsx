@@ -55,6 +55,9 @@ export function FullScreen() {
     return null
   }
 
+  const goLeft = () => window.postMessage({ type: "image-left" })
+  const goRight = () => window.postMessage({ type: "image-right" })
+
   const closeModal = () => {
     setModalIsOpen(false);
     history.pushState(null, '', window.location.pathname);
@@ -75,21 +78,63 @@ export function FullScreen() {
   >
     <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
     <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 left-0 top-10 bottom-10 focus:border-0`}
-      onClick={() => window.postMessage({ type: "image-left" })} title="Prev">
+      onClick={goLeft} title="Prev">
       &nbsp;
     </button>
     <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 right-0 top-10 bottom-10 focus:border-0`}
-      onClick={() => window.postMessage({ type: "image-right" })} title="Next">
+      onClick={goRight} title="Next">
       &nbsp;
     </button>
-    <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0" title="Close"
-      onClick={closeModal}>
-      &#x2715;
-    </button>
-    <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0 bottom-0" title="Toggle fullscreen"
-      onClick={toggleFullScreen}>
-      &#x26F6;
-    </button>
+    <div id="desktop-nav" className="hidden md:block">
+      <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0" title="Close"
+        onClick={closeModal}>
+        &#x2715;
+      </button>
+      <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0 bottom-0" title="Toggle fullscreen"
+        onClick={toggleFullScreen}>
+        &#x26F6;
+      </button>
+    </div>
+
+    {/* Bottom bar — close left, fullscreen right */}
+    <div id="mobile-nav" className="md:hidden absolute bottom-0 left-0 right-0 flex justify-between items-center px-4 py-3 bg-slate-950">
+      <button
+        type="button"
+        className="text-white text-2xl focus:border-0 disabled:opacity-30 md:hidden"
+        title="Previous"
+        aria-label="Previous image"
+        onClick={goLeft}
+      >
+        &#x276E;
+      </button>
+      <button
+        type="button"
+        className="text-white text-2xl focus:border-0"
+        title="Close"
+        aria-label="Close"
+        onClick={closeModal}
+      >
+        &#x2715;
+      </button>
+      <button
+        type="button"
+        className="text-white text-2xl focus:border-0"
+        title="Toggle fullscreen"
+        aria-label="Toggle fullscreen"
+        onClick={toggleFullScreen}
+      >
+        &#x26F6;
+      </button>
+      <button
+        type="button"
+        className="text-white text-2xl focus:border-0 disabled:opacity-30 md:hidden"
+        title="Next"
+        aria-label="Next image"
+        onClick={goRight}
+      >
+        &#x276F;
+      </button>
+    </div>
   </Modal>
 
 }

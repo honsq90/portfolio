@@ -25,6 +25,7 @@ const toggleFullScreen = () => {
 export function FullScreen() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<PhotoWindowDataNode>()
+  const [copied, setCopied] = useState(false);
 
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
@@ -60,6 +61,12 @@ export function FullScreen() {
 
   const goLeft = () => window.postMessage({ type: "image-left" })
   const goRight = () => window.postMessage({ type: "image-right" })
+
+  const copyLink = () => {
+    navigator.clipboard && navigator.clipboard.writeText(window.location.href)
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -149,11 +156,11 @@ export function FullScreen() {
       <button
         type="button"
         className="text-white text-2xl focus:border-0"
-        title="Toggle fullscreen"
-        aria-label="Toggle fullscreen"
-        onClick={toggleFullScreen}
+        aria-label="Copy link"
+        onClick={copyLink}
+        title={copied ? "Copied!" : "Copy link"}
       >
-        &#x26F6;
+        {copied ? "✅" : "🔗"}
       </button>
       <button
         type="button"

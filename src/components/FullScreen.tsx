@@ -1,5 +1,5 @@
 import { GatsbyImage } from "gatsby-plugin-image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 
 interface PhotoWindowDataNode {
@@ -25,6 +25,9 @@ const toggleFullScreen = () => {
 export function FullScreen() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<PhotoWindowDataNode>()
+
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   useEffect(() => {
     const processMessage = (event: MessageEvent<PhotoWindowData>): void => {
@@ -63,6 +66,26 @@ export function FullScreen() {
     history.pushState(null, '', window.location.pathname);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+      if (deltaX < 0) goRight();
+      else goLeft();
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
   return <Modal
     overlayClassName="z-10 inset-0 fixed"
     className="inset-0 absolute justify-center flex"
@@ -76,16 +99,23 @@ export function FullScreen() {
     onRequestClose={closeModal}
     ariaHideApp={false}
   >
-    <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
-    <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 left-0 top-10 bottom-10 focus:border-0`}
-      onClick={goLeft} title="Prev">
-      &nbsp;
-    </button>
-    <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 right-0 top-10 bottom-10 focus:border-0`}
-      onClick={goRight} title="Next">
-      &nbsp;
-    </button>
+    <div
+      className="w-full h-full flex justify-center"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <GatsbyImage image={selectedImage.fullScreen} alt={selectedImage.title} objectFit="contain" />
+    </div>
+
     <div id="desktop-nav" className="hidden md:block">
+      <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 left-0 top-10 bottom-10 focus:border-0`}
+        onClick={goLeft} title="Prev">
+        &nbsp;
+      </button>
+      <button type="button" className={`text-white p-2 absolute w-1/2 md:w-1/4 right-0 top-10 bottom-10 focus:border-0`}
+        onClick={goRight} title="Next">
+        &nbsp;
+      </button>
       <button type="button" className="text-white p-2 text-2xl absolute right-0 focus:border-0" title="Close"
         onClick={closeModal}>
         &#x2715;
@@ -136,5 +166,4 @@ export function FullScreen() {
       </button>
     </div>
   </Modal>
-
 }

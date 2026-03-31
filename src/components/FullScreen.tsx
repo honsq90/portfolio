@@ -35,7 +35,7 @@ export function FullScreen() {
       if (event.data.type == "image-clicked") {
         setSelectedImage(event.data.node)
         setModalIsOpen(true)
-      } else if (event.data.type == "image-requested") {
+      } else if (modalIsOpen && event.data.type == "image-requested") {
         setSelectedImage(event.data.node)
         history.pushState(null, '', `#${event.data.node.title.replace(" ", "_")}`);
       }
@@ -53,7 +53,7 @@ export function FullScreen() {
       window.removeEventListener("message", processMessage)
       window.removeEventListener("keydown", hotkeyFullscreen)
     }
-  }, [])
+  }, [modalIsOpen])
 
   if (!selectedImage) {
     return null

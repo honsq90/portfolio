@@ -118,7 +118,7 @@ export const query = graphql`
         id
         title
         gatsbyImageData(height: 800)
-        fullScreen: gatsbyImageData(height: 1200)
+        fullScreen: gatsbyImageData(height: 1200, quality: 85)
       }
     }
   }

@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { groupBy, reverse } from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import logo from "../static/images/logo.png";
+import banner from "../static/images/banner.png";
 
 function transformEventKeyToCommand(eventKey: string): "left" | "right" | null {
   if (eventKey == "ArrowLeft") {
@@ -100,9 +100,10 @@ const IndexPage = ({ data }: PageProps<Queries.AllPhotosQuery>) => {
 export const Head = () => (
   <>
     <title>Shuqian Hon Photography</title>
+    <meta property="description" content="Captured on various Nikon DSLRs" />
     <meta property="og:title" content="Shuqian Hon Photography" />
-    <meta property="og:description" content="Shot on various Nikon DSLRs" />
-    <meta property="og:image" content={`https://honsq90.github.io${logo}`} />
+    <meta property="og:description" content="Captured on various Nikon DSLRs" />
+    <meta property="og:image" content={`https://honsq90.github.io${banner}`} />
     <meta property="og:url" content="https://honsq90.github.io" />
     <meta property="og:type" content="website" />
   </>
